@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="Hbc" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="719.0" spacing="80.0" style="-fx-background-color: #02030A; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Edit_Controller">
+    <children>
+        <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../sample/gps-searching.png" />
+            </image>
+            <HBox.margin>
+                <Insets left="10.0" />
+            </HBox.margin>
+        </ImageView>
+        <Label fx:id="nameid" text="name"   prefWidth="58.0" textFill="#b7c3d7">
+            <HBox.margin>
+                <Insets left="-70.0" />
+            </HBox.margin></Label>
+        <Label fx:id="dateid" text="date" textFill="#b7c3d7">
+            <HBox.margin>
+                <Insets />
+            </HBox.margin>
+        </Label>
+        <Label fx:id="priceid" text="Price" />
+      <Label fx:id="wfid" prefHeight="17.0" prefWidth="58.0" text="Workforce" />
+        <Label fx:id="Projectid" visible="false"/>
+      <Button fx:id="Edit" mnemonicParsing="false"  prefWidth="58.0" onAction="#Edit_Project" text="Edit" />
+      <Button fx:id="Del" mnemonicParsing="false"  prefWidth="58.0"  onAction="#Delete_Project" text="Delete" />
+    </children>
+    <effect>
+        <DropShadow blurType="GAUSSIAN" height="5.0" radius="2.0" width="5.0" />
+    </effect>
+</HBox>
