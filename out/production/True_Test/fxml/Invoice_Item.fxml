@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="80.0" style="-fx-background-color: #02030A; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Edit_Controller">
+<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="820.0" spacing="80.0" style="-fx-background-color: #02030A; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Edit_Controller">
    <children>
       <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -18,13 +18,15 @@
             <Insets left="10.0" />
          </HBox.margin>
       </ImageView>
-      <Label fx:id="nameid" prefWidth="115.0" text="name" textFill="#b7c3d7">
+      <Label fx:id="invoice_id" graphicTextGap="0.0" prefWidth="115.0" text="Invoice Id" textFill="WHITE">
          <HBox.margin>
             <Insets left="-70.0" />
          </HBox.margin>
       </Label>
-      <Label text="Label" textFill="WHITE" />
-      <Button fx:id="Add_Dom" mnemonicParsing="false" text="Add_Domain" />
+      <Label fx:id="bill_date" prefHeight="17.0" prefWidth="86.0" text="Bill Date" textFill="WHITE" />
+      <Label fx:id="price_id" prefHeight="17.0" prefWidth="77.0" text="Price" textFill="WHITE" />
+      <Label prefWidth="115.0" text="Reccuring Every" textFill="WHITE" />
+      <Button fx:id="Add_Payment" mnemonicParsing="false" prefWidth="115.0" text="Add Payment" />
    </children>
    <effect>
       <DropShadow blurType="GAUSSIAN" height="5.0" radius="2.0" width="5.0" />

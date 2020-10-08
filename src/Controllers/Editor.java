@@ -170,18 +170,19 @@ public class Editor extends AboveGod {
 
             box = FXMLLoader.load(getClass().getResource("../fxml/Invoice_Item.fxml"));
 
+            Invoice invoice = customerMap.get(id).GetInvoicesList().get(i);
+
+            ((Label) box.getChildren().get(1)).setText("INVOICE#" + invoice.getId());
+
+            ((Label) box.getChildren().get(2)).setText(invoice.getBill_Date().toString());
+
+            ((Label) box.getChildren().get(3)).setText(Integer.toString(invoice.getPrice()));
+
+            ((Label) box.getChildren().get(4)).setText(invoice.getRecurring());
+
+            Invoice_Box.getChildren().add(box);
 
 
-            if(customerMap.get(id).GetInvoicesList().get(i).getRecurring().equals("Monthly") ||
-                    customerMap.get(id).GetInvoicesList().get(i).getRecurring().equals("Once") ||
-                    customerMap.get(id).GetInvoicesList().get(i).getRecurring().equals("Per Hour"))
-            {
-                ((Label) box.getChildren().get(1)).setText(customerMap.get(id).GetInvoicesList().get(i).getType());
-
-                ((Label) box.getChildren().get(2)).setText(Integer.toString(customerMap.get(id).GetInvoicesList().get(i).getPrice()));
-
-                Invoice_Box.getChildren().add(box);
-            }
 
         }
 

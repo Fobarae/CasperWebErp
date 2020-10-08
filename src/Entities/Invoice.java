@@ -85,6 +85,14 @@ public class Invoice {
         return type;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public Date getBill_Date() {
+        return Bill_Date;
+    }
+
     public ArrayList<Item> getItems() {
         return items;
     }
