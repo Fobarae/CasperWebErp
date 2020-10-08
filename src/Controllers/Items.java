@@ -35,7 +35,7 @@ public class Items implements Initializable {
 
         ReadFromFile rd=new ReadFromFile();
 
-        ArrayList<Item> items =rd.ReadItemsFile("LifeManager/src/Csv/InvoiceItems.csv");
+        ArrayList<Item> items =rd.ReadItemsFile("src/Csv/InvoiceItems.csv");
 
         for (Item item : items){
 

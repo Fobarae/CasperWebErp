@@ -1,23 +1,17 @@
 package Controllers;
-import Entities.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sample.ReadFromFile;
 //This is commited
 //import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -45,7 +39,7 @@ public class Controller implements Initializable {
     private Button btnCalendar;
 
     @FXML
-    private Button btnEmails;
+    private Button btnWorkers;
 
     @FXML
     private Button btnExit;
@@ -60,7 +54,7 @@ public class Controller implements Initializable {
     private Pane paneItems;
 
     @FXML
-    private Pane pnlEmails;
+    private Pane pnlWorkers;
 
     @FXML
     private Pane pnlExit;
@@ -79,7 +73,7 @@ public class Controller implements Initializable {
         pnlCalendar.setStyle("-fx-background-color : #f1d744"); //yellow
 
         pnlExit.setStyle("-fx-background-color : #ff00eb"); //purple
-        pnlEmails.setStyle("-fx-background-color : #ffffff"); //white
+        pnlWorkers.setStyle("-fx-background-color : #ff00eb"); //white
 
 
 
@@ -129,7 +123,23 @@ public class Controller implements Initializable {
                 Stackpane.getChildren().add(Items_sp);
 
         pnlHome.toFront();
+
+        Pane Workers_sp = new Pane();
+        try {
+            Items_sp = FXMLLoader.load(getClass().getResource("../fxml/Workers.fxml"));
+            Items_sp.setId("workers");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Stackpane.getChildren().add(Items_sp);
+
+        pnlHome.toFront();
+
     }
+
+
 
     @FXML
     private void closeButtonAction(){
@@ -166,16 +176,18 @@ public class Controller implements Initializable {
                     Stackpane.lookup("#items").toFront();
         }
 
+        if(actionEvent.getSource()== btnWorkers)
+        {
+            Stackpane.lookup("#workers").setStyle("-fx-background-color : #ca7f68");
+            Stackpane.lookup("#workers").toFront();
+        }
 
         if(actionEvent.getSource()==btnExit)
         {
             closeButtonAction();
         }
 
-        if(actionEvent.getSource()==btnEmails)
-        {
-            pnlEmails.toFront();
-        }
+
 
     }
 }

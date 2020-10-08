@@ -24,6 +24,18 @@ public class Worker {
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getWorkerid() {
+        return workerid;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
 
 
     //Add a task to a worker

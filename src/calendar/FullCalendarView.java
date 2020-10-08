@@ -89,7 +89,7 @@ public class FullCalendarView {
             //---------------------------------------------------------------------------------------------------------------
 
             ReadAppointments appointments = new ReadAppointments();
-            ArrayList<Appointment> myAppointments = appointments.ReadFile("LifeManager/src/Csv/appointments.csv");
+            ArrayList<Appointment> myAppointments = appointments.ReadFile("src/Csv/appointments.csv");
 
             Text txt = new Text(String.valueOf(calendarDate.getDayOfMonth()));
 
