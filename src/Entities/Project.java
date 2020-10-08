@@ -1,14 +1,11 @@
 package Entities;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Date;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -19,14 +16,40 @@ public class Project extends AboveGod {
     float price;
     int workforce;
     String filename;
-    String id;
+    int id;
+    HashMap<Worker,ArrayList<Task>> workers;
 
-    public Project(String name, Date dueDate, float price, int workforce){
+    //is accesed by getting the workers tasks on the corresponding project
+    ArrayList<String>todo;
+
+    Project(String name, Date deadline, HashMap<Integer,Worker> workers,int workforce,ArrayList<String>todo){
         setName(name);
         setDueDate(dueDate);
         setPrice(price);
         setWorkforce(workforce);
-        setId();
+    }
+
+
+
+    public void addWorker(Worker worker,ArrayList<Task> temp){
+       this.workers.put(worker,temp);
+    }
+
+    HashMap<Worker,ArrayList<Task>> getWorkers(){
+        return this.workers;
+    }
+
+
+
+
+    //The constructor called when first initiallizing the ProjectMap
+    public Project(int id,String name, Date dueDate, float price, int workforce){
+        setId(id);
+        setName(name);
+        setDueDate(dueDate);
+        setPrice(price);
+        setWorkforce(workforce);
+        this.workers=new HashMap<>();
 
     }
 
@@ -39,11 +62,11 @@ public class Project extends AboveGod {
         return result;
     }
 
-    public void setId() {
-        this.id =String.valueOf(ThreadLocalRandom.current().nextInt(0, 10000 + 1));
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

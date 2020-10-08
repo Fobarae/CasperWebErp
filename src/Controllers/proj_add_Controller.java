@@ -61,63 +61,63 @@ public class proj_add_Controller  extends AboveGod {
 
 
 
-    public void Add_Project() throws IOException {
-        String name = NameF.getText();
-        String date = DateF.getText();
-        String price = PriceF.getText();
-        String wf = WorkforceF.getText();
+//    public void Add_Project() throws IOException {
+//        String name = NameF.getText();
+//        String date = DateF.getText();
+//        String price = PriceF.getText();
+//        String wf = WorkforceF.getText();
+//
+//        HBox hbox = new HBox();
+//        hbox = FXMLLoader.load(getClass().getResource("../fxml/Project_Item.fxml"));
+//
+////        Project temp=new Project(name, Date.valueOf(date),Float.parseFloat(price),Integer.parseInt(wf));
+//
+//        ((Label)hbox.getChildren().get(1)).setText(name);
+//
+//        ((Label)hbox.getChildren().get(2)).setText(date);
+//
+//        ((Label)hbox.getChildren().get(3)).setText(price);
+//
+//        ((Label)hbox.getChildren().get(4)).setText(wf);
+//
+////        ((Label)hbox.getChildren().get(5)).setText(temp.getId());
+//
+//
+//
+//        hbox.setId(String.valueOf(counter));
+//
+//        System.out.println("Counter before =" + counter);
+//        setCounter(counter);
+//
+//        System.out.println("Counter after =" + counter);
+//
+//        vbc.getChildren().add(hbox);
+//
+//        WriteFile wr=new WriteFile();
+//
+//
+//        wr.SaveProjectsAdded(name,date,price,wf);
+//        projectMap.put(temp.getId(),temp);
+//
+//        // get a handle to the stage
+//        Stage stage = (Stage) AddB.getScene().getWindow();
+//        // do what you have to do
+//        stage.close();
+//
+//
+//
+//
+//    }
 
-        HBox hbox = new HBox();
-        hbox = FXMLLoader.load(getClass().getResource("../fxml/Project_Item.fxml"));
 
-        Project temp=new Project(name, Date.valueOf(date),Float.parseFloat(price),Integer.parseInt(wf));
-
-        ((Label)hbox.getChildren().get(1)).setText(name);
-
-        ((Label)hbox.getChildren().get(2)).setText(date);
-
-        ((Label)hbox.getChildren().get(3)).setText(price);
-
-        ((Label)hbox.getChildren().get(4)).setText(wf);
-
-        ((Label)hbox.getChildren().get(5)).setText(temp.getId());
-
-
-
-        hbox.setId(String.valueOf(counter));
-
-        System.out.println("Counter before =" + counter);
-        setCounter(counter);
-
-        System.out.println("Counter after =" + counter);
-
-        vbc.getChildren().add(hbox);
-
-        WriteFile wr=new WriteFile();
-
-
-        wr.SaveProjectsAdded(name,date,price,wf);
-        projectMap.put(temp.getId(),temp);
-
-        // get a handle to the stage
-        Stage stage = (Stage) AddB.getScene().getWindow();
-        // do what you have to do
-        stage.close();
-
-
-
-
-    }
-
-
-    public void pressed(ActionEvent event) throws IOException
-    {
-        if (event.getSource() == AddB)
-        {
-            System.out.println("KEKEKEKEK");
-            Add_Project();
-        }
-    }
+//    public void pressed(ActionEvent event) throws IOException
+//    {
+//        if (event.getSource() == AddB)
+//        {
+//            System.out.println("KEKEKEKEK");
+//            Add_Project();
+//        }
+//    }
 
 
 

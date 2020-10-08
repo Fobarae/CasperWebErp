@@ -79,51 +79,51 @@ return customerMap;
 
         }
 
-    public Map<String, Project> ReadFileProjects(String filename)  {
-        File file=new File(filename);
-        System.out.println("File exists : "+file.exists());
-
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ",";
-        String[] Project=null;
-        int i=0;
-        try {
-
-            br = new BufferedReader(new FileReader(filename));
-            while ((line = br.readLine()) != null) {
-
-
-                // use comma as separator
-                Project = line.split(cvsSplitBy);
-                //Fill the global list with the customers
-                //customers.add(new Customer(Customers[0],Customers[1],Integer.parseInt(Customers[2]),Integer.parseInt(Customers[3])));
-                Project temp=new Project(Project[0],Date.valueOf(Project[1]),Float.parseFloat(Project[2]),Integer.parseInt(Project[3]));
-                projectMap.put(temp.getId(),temp);
-
-
-
-
-
-                //System.out.println("Name : " + Customers[0] + " ,Domain Name : " + Customers[1] + " , Price : "+Customers[2]+" Id : "+Customers[3]);
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return projectMap;
-
-    }
+//    public Map<String, Project> ReadFileProjects(String filename)  {
+//        File file=new File(filename);
+//        System.out.println("File exists : "+file.exists());
+//
+//        BufferedReader br = null;
+//        String line = "";
+//        String cvsSplitBy = ",";
+//        String[] Project=null;
+//        int i=0;
+//        try {
+//
+//            br = new BufferedReader(new FileReader(filename));
+//            while ((line = br.readLine()) != null) {
+//
+//
+//                // use comma as separator
+//                Project = line.split(cvsSplitBy);
+//                //Fill the global list with the customers
+//                //customers.add(new Customer(Customers[0],Customers[1],Integer.parseInt(Customers[2]),Integer.parseInt(Customers[3])));
+//              //  Project temp=new Project(Project[0],Date.valueOf(Project[1]),Float.parseFloat(Project[2]),Integer.parseInt(Project[3]));
+//              //  projectMap.put(temp.getId(),temp);
+//
+//
+//
+//
+//
+//                //System.out.println("Name : " + Customers[0] + " ,Domain Name : " + Customers[1] + " , Price : "+Customers[2]+" Id : "+Customers[3]);
+//            }
+//
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (br != null) {
+//                try {
+//                    br.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//        return projectMap;
+//
+//    }
 
     public void ReadInvoiceTypes() throws IOException {
         BufferedReader br = null;

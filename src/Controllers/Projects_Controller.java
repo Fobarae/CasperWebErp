@@ -7,6 +7,7 @@ import Entities.Project;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import Methods.Read_Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -81,8 +83,23 @@ public class Projects_Controller  extends AboveGod implements Initializable   {
         int i=0;
         //ArrayList<Customer> list =rd.ReadFile("src\\Csv\\customers.csv");
 
-        projectMap=rd.ReadFileProjects("LifeManager/src/Csv/Projects_test.csv");
-        for (Map.Entry<String, Project>entry:projectMap.entrySet()){
+        //projectMap=rd.ReadFileProjects("LifeManager/src/Csv/Projects_test.csv");
+        Read_Database reader=new Read_Database();
+
+        try {
+            reader.LoadProjects();
+            reader.LoadWorkers();
+            reader.LoadWorkerTaks();
+            reader.LoadProjectWorkers();
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        for (Map.Entry<Integer, Project>entry:projectMap.entrySet()){
 
             try {
 
@@ -99,7 +116,7 @@ public class Projects_Controller  extends AboveGod implements Initializable   {
 
                 ((Label)box.getChildren().get(4)).setText(String.valueOf(entry.getValue().getWorkforce()));
 
-                ((Label)box.getChildren().get(5)).setText(entry.getValue().getId());
+               ((Label)box.getChildren().get(5)).setText(String.valueOf(entry.getValue().getId()));
 
 
 
@@ -133,7 +150,7 @@ public class Projects_Controller  extends AboveGod implements Initializable   {
 
     public long findClosestDeadLine(){
         long min=100000000;
-        for (Map.Entry<String, Project>entry:projectMap.entrySet()){
+        for (Map.Entry<Integer, Project>entry:projectMap.entrySet()){
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate deadline_date = LocalDate.parse(entry.getValue().getDueDate().toString(), dtf);
             LocalDate currentDate = LocalDate.now();
@@ -146,7 +163,7 @@ public class Projects_Controller  extends AboveGod implements Initializable   {
 
     public int totalRevenue(){
         int price=0;
-        for (Map.Entry<String, Project>entry:projectMap.entrySet()){
+        for (Map.Entry<Integer, Project>entry:projectMap.entrySet()){
             price+=entry.getValue().getPrice();
         }
         return price;

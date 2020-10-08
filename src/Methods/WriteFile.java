@@ -188,7 +188,7 @@ public class WriteFile extends AboveGod {
 
           List<String[]> allElements = new ArrayList<String[]>();
 
-          for (Map.Entry<String, Project> entry : projectMap.entrySet()
+          for (Map.Entry<Integer, Project> entry : projectMap.entrySet()
           ) {
                System.out.println("Item added : "+entry.getValue().toStringArray());
                allElements.add(entry.getValue().toStringArray());

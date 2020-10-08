@@ -139,4 +139,132 @@ public class Read_Database extends AboveGod {
 
 
     }
+
+    public void LoadProjects() throws ClassNotFoundException, SQLException {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CASPERWEB_DATABSE", "root", "root");
+//here sonoo is database name, root is username and password
+            Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery("select * from PROJECTS ");
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                Date deadline = rs.getDate(3);
+                float price = rs.getFloat(4);
+                int workforce=rs.getInt(5);
+                Project project = new Project(id,name,deadline,price,workforce);
+                projectMap.put(id,project);
+
+
+
+                System.out.println("Project id : " +id+ " Name :  " +name+" Price :  " +price + " Workforce :  " +workforce );
+
+
+
+            }
+            con.close();
+
+    }
+
+    public void LoadWorkers() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CASPERWEB_DATABSE", "root", "root");
+    //here sonoo is database name, root is username and password
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select * from WORKERS ");
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String name = rs.getString(2);
+            String email = rs.getString(3);
+            Worker worker=new Worker(id,name,email);
+            workerMap.put(id,worker);
+
+
+
+            System.out.println("Worker id : " +id+ " Name :  " +name+" Email :  " +email  );
+
+
+
+        }
+        con.close();
+
+    }
+
+    public void LoadProjectWorkers() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CASPERWEB_DATABSE", "root", "root");
+        //here sonoo is database name, root is username and password
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("\n" +
+                "SELECT PROJ.PROJECT_ID , WOR.WORKER_ID \n" +
+                "FROM PROJECTS PROJ\n" +
+                "INNER JOIN PROJ_WORKER_LINK LINK ON PROJ.PROJECT_ID = LINK.PROJECT_ID\n" +
+                "INNER JOIN WORKERS WOR ON LINK.WORKER_ID = WOR.WORKER_ID");
+        while (rs.next()) {
+            int project_id = rs.getInt(1);
+            int worker_id=rs.getInt(2);
+
+            ArrayList<Task> temp=new ArrayList<>();
+
+            for (int i=0;i < workerMap.get(worker_id).getTodo().size();i++){
+                if (project_id==workerMap.get(worker_id).getTodo().get(i).getProject_id()){
+                    temp.add(workerMap.get(worker_id).getTodo().get(i));
+                }
+            }
+            projectMap.get(project_id).addWorker(workerMap.get(worker_id),temp);
+
+
+
+
+
+            System.out.println("Worker id : " + worker_id + " ||  Project id : "+ project_id);
+
+
+
+        }
+        con.close();
+    }
+
+    public void LoadWorkerTaks() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CASPERWEB_DATABSE", "root", "root");
+        //here sonoo is database name, root is username and password
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("SELECT * FROM TASKS;");
+        while (rs.next()) {
+            int task_id = rs.getInt(1);
+            String taskname=rs.getString(2);
+            String taskDesc=rs.getString(3);
+            Date deadline=rs.getDate(4);
+            Boolean status=rs.getBoolean(5);
+            int project_id=rs.getInt(6);
+            int worker_id=rs.getInt(7);
+
+            Task task=new Task(task_id,taskname,taskDesc,deadline,status,project_id);
+
+            workerMap.get(worker_id).addTodo(task);
+
+
+
+            System.out.println("Task id : " + task_id+ " name : " + "Project id : " + project_id + " Worker id : "+ worker_id);
+
+
+
+        }
+        con.close();
+    }
+
+
+
+
+
+
+
+
+
 }
